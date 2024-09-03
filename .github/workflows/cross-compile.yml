@@ -146,6 +146,8 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php-versions }}
+        env:
+          phpts: ${{ matrix.ts }}
 
       - name: Build (Linux)
         if: matrix.os == 'ubuntu-latest'
@@ -167,7 +169,7 @@ jobs:
           str_version=${{ env.VERSION }}
           version=${str_version#turso-php-extension/}
 
-          for ts_type in ${{ matrix.ts }}; do
+          for ts_type in ${{ matrix.ts[*] }}; do
             dirname="${binary_name}-${version}-php-${{ matrix.php-versions }}-${ts_type}-${{ matrix.target }}"
             mkdir "$dirname"
 
