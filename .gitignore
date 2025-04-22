@@ -15,3 +15,4 @@ notes/
 *.bak
 src/*.bak
 vendor/
+.idea
